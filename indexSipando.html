@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sipan Dolatkhah, M.R. — Law Specialist</title>
+<meta name="description" content="Personal site of Sipan Dolatkhah (M.R.) — sports law, EU digital regulation, AI law, and international public law.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:        #12202A;   /* deep slate-navy, background */
+    --ink-2:      #1B2E39;   /* slightly lighter panel */
+    --paper:      #EDEBDF;   /* cool document paper */
+    --paper-dim:  #DCD9C9;
+    --seal:       #B08D3E;   /* brass / wax-seal accent */
+    --seal-soft:  rgba(176,141,62,0.16);
+    --ink-text:   #E7E4D6;   /* body text on dark */
+    --ink-text-soft: #A9B4BB;
+    --paper-text: #1B2420;
+    --paper-text-soft:#5B6B60;
+    --rule:       rgba(231,228,214,0.16);
+    --rule-paper: rgba(27,36,32,0.14);
+
+    --display: "Newsreader", serif;
+    --body: "IBM Plex Sans", sans-serif;
+    --mono: "IBM Plex Mono", monospace;
+
+    --maxw: 920px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
+  }
+
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--ink-text);
+    font-family:var(--body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{ color:inherit; }
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- Docket nav ---------- */
+  .docket{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:50;
+    background:rgba(18,32,42,0.86);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--rule);
+  }
+  .docket .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding-top:16px;
+    padding-bottom:16px;
+  }
+  .docket-mark{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--seal);
+  }
+  .docket-links{
+    display:flex;
+    gap:28px;
+    list-style:none;
+    margin:0; padding:0;
+  }
+  .docket-links a{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.06em;
+    text-decoration:none;
+    color:var(--ink-text-soft);
+    transition:color .2s ease;
+    padding:4px 2px;
+  }
+  .docket-links a:hover,
+  .docket-links a:focus-visible{ color:var(--seal); }
+  .docket-links a:focus-visible{ outline:2px solid var(--seal); outline-offset:4px; border-radius:2px; }
+  .docket-toggle{ display:none; }
+
+  @media (max-width:640px){
+    .docket-links{ gap:16px; }
+    .docket-links span.label{ display:none; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:168px 0 96px;
+    border-bottom:1px solid var(--rule);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    right:-120px; top:-140px;
+    width:420px; height:420px;
+    border:1px solid var(--rule);
+    border-radius:50%;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    right:-40px; top:-40px;
+    width:260px; height:260px;
+    border:1px solid var(--rule);
+    border-radius:50%;
+  }
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--seal);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:26px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:26px; height:1px;
+    background:var(--seal);
+    display:inline-block;
+  }
+  h1.name{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:clamp(40px, 7vw, 74px);
+    line-height:1.04;
+    margin:0 0 6px;
+    letter-spacing:-0.01em;
+  }
+  h1.name em{
+    font-style:italic;
+    color:var(--seal);
+  }
+  h1.name .suffix{
+    font-family:var(--mono);
+    font-size:clamp(14px,1.6vw,17px);
+    font-style:normal;
+    font-weight:400;
+    letter-spacing:0.06em;
+    color:var(--seal);
+    vertical-align:super;
+    margin-left:10px;
+  }
+  .role{
+    font-family:var(--display);
+    font-style:italic;
+    font-size:clamp(18px,2.4vw,24px);
+    color:var(--ink-text-soft);
+    margin:0 0 30px;
+    max-width:56ch;
+  }
+  .hero-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 14px;
+    margin-bottom:36px;
+  }
+  .chip{
+    font-family:var(--mono);
+    font-size:11.5px;
+    letter-spacing:0.03em;
+    color:var(--ink-text-soft);
+    border:1px solid var(--rule);
+    padding:6px 12px;
+    border-radius:999px;
+  }
+  .hero-actions{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:0.04em;
+    text-decoration:none;
+    padding:12px 22px;
+    border-radius:2px;
+    display:inline-block;
+    transition:transform .2s ease, background .2s ease, color .2s ease;
+  }
+  .btn-primary{
+    background:var(--seal);
+    color:#181008;
+  }
+  .btn-primary:hover{ transform:translateY(-1px); }
+  .btn-ghost{
+    border:1px solid var(--rule);
+    color:var(--ink-text);
+  }
+  .btn-ghost:hover{ border-color:var(--seal); color:var(--seal); }
+  .btn:focus-visible{ outline:2px solid var(--seal); outline-offset:3px; }
+
+  /* ---------- Articles (sections) ---------- */
+  .article{
+    padding:96px 0;
+    border-bottom:1px solid var(--rule);
+    opacity:0;
+    transform:translateY(14px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .article.in{ opacity:1; transform:translateY(0); }
+  .article:last-of-type{ border-bottom:none; }
+
+  .article-head{
+    display:flex;
+    align-items:baseline;
+    gap:18px;
+    margin-bottom:44px;
+  }
+  .article-num{
+    font-family:var(--mono);
+    font-size:13px;
+    color:var(--seal);
+    letter-spacing:0.08em;
+    white-space:nowrap;
+  }
+  .article-head h2{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:clamp(26px,3.6vw,36px);
+    margin:0;
+  }
+  .article-line{
+    flex:1;
+    height:1px;
+    background:var(--rule);
+    margin-left:8px;
+    align-self:center;
+  }
+
+  /* About */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:56px;
+  }
+  @media (max-width:760px){ .about-grid{ grid-template-columns:1fr; } }
+  .about-grid p{ margin:0 0 18px; color:var(--ink-text); max-width:56ch; }
+  .about-grid p.lede{
+    font-family:var(--display);
+    font-size:19px;
+    color:#F2EFE2;
+  }
+  .fact-list{ list-style:none; margin:0; padding:0; }
+  .fact-list li{
+    display:grid;
+    grid-template-columns:96px 1fr;
+    gap:14px;
+    padding:14px 0;
+    border-top:1px solid var(--rule);
+    font-size:14px;
+  }
+  .fact-list li:first-child{ border-top:none; }
+  .fact-list dt{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink-text-soft);
+  }
+
+  /* CV / paper panel */
+  .cv-panel{
+    background:var(--paper);
+    color:var(--paper-text);
+    border-radius:4px;
+    padding:44px clamp(20px,4vw,52px);
+  }
+  .cv-panel .article-num{ color:#8A6A22; }
+  .cv-panel .article-line{ background:var(--rule-paper); }
+  .cv-panel .article-head h2{ color:var(--paper-text); }
+
+  .timeline{ list-style:none; margin:0; padding:0; }
+  .timeline li{
+    display:grid;
+    grid-template-columns:120px 1fr;
+    gap:24px;
+    padding:22px 0;
+    border-top:1px solid var(--rule-paper);
+  }
+  .timeline li:first-child{ border-top:none; }
+  @media (max-width:600px){
+    .timeline li{ grid-template-columns:1fr; gap:6px; }
+  }
+  .timeline .when{
+    font-family:var(--mono);
+    font-size:12px;
+    color:#8A6A22;
+    letter-spacing:0.04em;
+    padding-top:2px;
+  }
+  .timeline h3{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:18px;
+    margin:0 0 6px;
+    color:var(--paper-text);
+  }
+  .timeline p{
+    margin:0;
+    font-size:14.5px;
+    color:var(--paper-text-soft);
+    max-width:60ch;
+  }
+  .fill{
+    background:var(--seal-soft);
+    color:#7A5A18;
+    padding:0 4px;
+    border-radius:2px;
+    font-style:normal;
+  }
+
+  .cv-download{
+    margin-top:36px;
+    padding-top:28px;
+    border-top:1px solid var(--rule-paper);
+    display:flex;
+    align-items:center;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .cv-download .btn-primary{ color:#181008; }
+
+  /* Publications */
+  .pub-list{ list-style:none; margin:0; padding:0; }
+  .pub{
+    padding:26px 0;
+    border-top:1px solid var(--rule);
+    display:grid;
+    grid-template-columns:56px 1fr;
+    gap:20px;
+  }
+  .pub:first-child{ border-top:none; }
+  @media (max-width:600px){ .pub{ grid-template-columns:1fr; gap:8px; } }
+  .pub-tag{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--seal);
+    letter-spacing:0.05em;
+  }
+  .pub h3{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:19px;
+    margin:0 0 8px;
+  }
+  .pub p{ margin:0; color:var(--ink-text-soft); font-size:14.5px; max-width:62ch; }
+
+  /* Contact */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+  }
+  @media (max-width:640px){ .contact-grid{ grid-template-columns:1fr; } }
+  .contact-card{
+    border:1px solid var(--rule);
+    padding:26px;
+    border-radius:4px;
+  }
+  .contact-card h3{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-text-soft);
+    margin:0 0 12px;
+  }
+  .contact-card a{
+    font-family:var(--display);
+    font-size:20px;
+    text-decoration:none;
+    border-bottom:1px solid var(--rule);
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .contact-card a:hover{ color:var(--seal); border-color:var(--seal); }
+
+  footer{
+    padding:40px 0 60px;
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--ink-text-soft);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+</style>
+</head>
+<body>
+
+<nav class="docket" aria-label="Section navigation">
+  <div class="wrap">
+    <span class="docket-mark">Sipan Dolatkhah / Docket</span>
+    <ul class="docket-links">
+      <li><a href="#about"><span class="label">Art. I —</span> About</a></li>
+      <li><a href="#cv"><span class="label">Art. II —</span> CV</a></li>
+      <li><a href="#research"><span class="label">Art. III —</span> Research</a></li>
+      <li><a href="#outreach"><span class="label">Art. IV —</span> Outreach</a></li>
+      <li><a href="#contact"><span class="label">Art. V —</span> Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Bologna, Italy — Sports Law &amp; International Public Law</p>
+    <h1 class="name">Sipan Dolatkhah<span class="suffix">M.R.</span></h1>
+    <p class="role">A law specialist working where sports governance, EU digital regulation, AI law, and international public law meet.</p>
+    <div class="hero-meta">
+      <span class="chip">LL.M. — University of Bologna, 110/110 cum laude</span>
+      <span class="chip">Sports Law · International Public Law</span>
+      <span class="chip">EU Digital &amp; AI Regulation</span>
+      <span class="chip">Multilingual — 5 languages</span>
+    </div>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#cv">Read the CV</a>
+      <a class="btn btn-ghost" href="#contact">Get in touch</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ARTICLE I — ABOUT -->
+  <section class="article" id="about">
+    <div class="wrap">
+      <div class="article-head">
+        <span class="article-num">ART. I</span>
+        <h2>About</h2>
+        <span class="article-line" aria-hidden="true"></span>
+      </div>
+      <div class="about-grid">
+        <div>
+          <p class="lede">I work at the point where sport, technology, and law are forced to negotiate with each other.</p>
+          <p>My background is in sports law and international public law, built on an LL.M. from the University of Bologna. From there my work has moved outward into the regulatory questions that now sit next to sport: EU digital platform rules, AI governance, and how international institutions adapt when the ground shifts under them.</p>
+          <p>That has meant advising on governance for wrestling federations, working on the regulatory side of online sports streaming, and researching how human oversight should function under frameworks like the EU AI Act — often using professional sport as the case study that makes the abstract question concrete.</p>
+          <p>Alongside the research, I spend a lot of time making legal ideas legible outside the seminar room — through two podcasts, occasional national broadcast commentary, and a forthcoming introductory book on legal studies.</p>
+        </div>
+        <div>
+          <ul class="fact-list">
+            <li><dt>Based</dt><dd>Bologna, Italy</dd></li>
+            <li><dt>Focus</dt><dd>Sports law, EU digital &amp; AI regulation, international public law</dd></li>
+            <li><dt>Degree</dt><dd>LL.M., University of Bologna — 110/110 cum laude</dd></li>
+            <li><dt>Languages</dt><dd>Persian, Kurdish, Armenian, English, Italian, Russian</dd></li>
+            <li><dt>Currently</dt><dd>Legal advisor, Shamal Shin Construction — and independent researcher</dd></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTICLE II — CV -->
+  <section class="article" id="cv">
+    <div class="wrap">
+      <div class="cv-panel">
+        <div class="article-head">
+          <span class="article-num">ART. II</span>
+          <h2>Curriculum Vitae</h2>
+          <span class="article-line" aria-hidden="true"></span>
+        </div>
+
+        <ul class="timeline">
+          <li>
+            <span class="when">May 2026</span>
+            <div>
+              <h3>Master of Legal Studies (LL.M.), University of Bologna, Italy</h3>
+              <p><strong>Thesis:</strong> An interdisciplinary legal research project examining how digital transition is reshaping the regulation of football broadcasting. Using comparative legal analysis, governance evaluation, and policy interpretation, it analyses the regulatory frameworks of the United Kingdom, Italy, and Iran to assess how competition law, media rights governance, and technological change interact in the digital broadcasting landscape — evaluating emerging regulatory challenges, identifying structural gaps, and proposing pathways for more coherent, future-proof governance of football broadcasting in the digital era.</p>
+              <p style="margin-top:10px;"><strong>Supervisor:</strong> Prof. Daniele Senzani &nbsp;·&nbsp; <strong>Final grade:</strong> 110/110 cum laude</p>
+            </div>
+          </li>
+          <li>
+            <span class="when">2024–2025</span>
+            <div>
+              <h3>Law Exchange Program (Entertainment Law), University of Westminster, London, UK</h3>
+              <p>Average grade: A</p>
+            </div>
+          </li>
+          <li>
+            <span class="when">2020</span>
+            <div>
+              <h3>Master of International Public Law, SBU National University, Iran</h3>
+              <p>Grade: 16.5/20</p>
+            </div>
+          </li>
+          <li>
+            <span class="when">2018</span>
+            <div>
+              <h3>Bachelor of Law (LLB), Azad University, Iran</h3>
+              <p>Grade: 18/20</p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="article-head" style="margin-top:48px;">
+          <span class="article-num" style="font-size:12px;">—</span>
+          <h2 style="font-size:22px;">Awards &amp; Scholarships</h2>
+          <span class="article-line" aria-hidden="true"></span>
+        </div>
+        <ul class="timeline">
+          <li>
+            <span class="when">2026</span>
+            <div>
+              <h3>Best Young Researcher Award — Zagreb International Conference</h3>
+              <p>Awarded for outstanding research performance and presentation, recognising excellence in early-career scholarship.</p>
+            </div>
+          </li>
+          <li>
+            <span class="when">2024</span>
+            <div>
+              <h3>Erasmus+ Mobility Scholarship — European Commission</h3>
+              <p>Awarded following a competitive selection process, ranking first across all three preference lists submitted for Erasmus mobility placements.</p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="cv-download">
+          <a class="btn btn-primary" href="cv.pdf">Download full CV (PDF)</a>
+          <span style="font-family:var(--mono);font-size:12px;color:var(--paper-text-soft);">Full professional history is in the PDF — link it here once it's on the site.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTICLE III — RESEARCH & PUBLICATIONS -->
+  <section class="article" id="research">
+    <div class="wrap">
+      <div class="article-head">
+        <span class="article-num">ART. III</span>
+        <h2>Research &amp; Publications</h2>
+        <span class="article-line" aria-hidden="true"></span>
+      </div>
+
+      <ul class="pub-list">
+        <li class="pub">
+          <span class="pub-tag">2026 · I-CON, Belgrade</span>
+          <div>
+            <h3>AI-Assisted Decision Systems in Sport: Regulatory Frameworks, Private Authority, and Athlete Rights</h3>
+            <p>Conference paper accepted for the I-CON conference, examining how AI-assisted decisions in sport interact with regulatory frameworks, private governing authority, and athlete rights.</p>
+          </div>
+        </li>
+        <li class="pub">
+          <span class="pub-tag">2026 · ELU-S Conference, Lisbon</span>
+          <div>
+            <h3>EU Regulation of Digital Platforms in Sports Broadcasting</h3>
+            <p>Accepted abstract, developed into a full article covering competition law, the DMA, the DSA, the AVMSD, and Article 165 TFEU as they apply to sports broadcasting platforms.</p>
+          </div>
+        </li>
+        <li class="pub">
+          <span class="pub-tag">Master's Thesis · Completed May 2026</span>
+          <div>
+            <h3>Regulating Football Broadcasting in the Digital Era: A Comparative Legal Analysis of the United Kingdom, Italy, and Iran</h3>
+            <p>Final dissertation in Law and Digital Transition. Supervisor: Prof. Daniele Senzani. Final grade: 110/110 cum laude.</p>
+          </div>
+        </li>
+        <li class="pub">
+          <span class="pub-tag">Under publication · Expected 2026</span>
+          <div>
+            <h3>Introduction to Legal Studies <em style="font-style:italic;">(in Persian)</em></h3>
+            <p>Dolatkhah, M. &amp; N. Dolatkhah. Book. Publisher: Qa'lam Publisher.</p>
+          </div>
+        </li>
+        <li class="pub">
+          <span class="pub-tag">UWW World Conference 2025 · Zagreb · Peer-reviewed</span>
+          <div>
+            <h3>Crossing Borders on the Mat: Legal and Ethical Dimensions of Nationality Transfers in International Wrestling</h3>
+            <p>Dolatkhah, M. Conference paper. Awarded Best Young Researcher Award, Zagreb Conference.</p>
+          </div>
+        </li>
+        <li class="pub">
+          <span class="pub-tag">Published Articles</span>
+          <div>
+            <h3>Other Published Work</h3>
+            <p>Dolatkhah, M. “The Impact of Sports Diplomacy on International Law and the Interface of Governments” (2023).<br>Dolatkhah, M. “Interpol and Its Benefits for International Law” (2017).</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ARTICLE IV — OUTREACH & EDITORIAL ROLES -->
+  <section class="article" id="outreach">
+    <div class="wrap">
+      <div class="article-head">
+        <span class="article-num">ART. IV</span>
+        <h2>Outreach &amp; Editorial Roles</h2>
+        <span class="article-line" aria-hidden="true"></span>
+      </div>
+
+      <p style="max-width:64ch; color:var(--ink-text-soft); margin:-12px 0 36px;">Eight years of experience in sports commentary sit alongside the academic work — mostly channelled these days into two podcasts and occasional broadcast commentary.</p>
+
+      <div class="article-head" style="margin-bottom:28px;">
+        <span class="article-num" style="font-size:12px;">—</span>
+        <h2 style="font-size:22px;">Academic Outreach</h2>
+        <span class="article-line" aria-hidden="true"></span>
+      </div>
+      <ul class="pub-list">
+        <li class="pub">
+          <span class="pub-tag">Founder &amp; Host</span>
+          <div>
+            <h3>Radio Westphalia</h3>
+            <p>Academic podcast produced with master's and PhD students, focusing on the historical development of international law, contemporary legal debates, and the socio-legal dimensions of global governance.</p>
+          </div>
+        </li>
+        <li class="pub">
+          <span class="pub-tag">Founder &amp; Host</span>
+          <div>
+            <h3>Legal Legacy</h3>
+            <p>Interview-based podcast featuring conversations with legal scholars and practitioners, bridging academic legal research with public discourse and making complex legal issues accessible to broader audiences.</p>
+          </div>
+        </li>
+        <li class="pub">
+          <span class="pub-tag">National Media</span>
+          <div>
+            <h3>Contributor, Iranian National Television</h3>
+            <p>Legal commentator on sports governance and international regulatory issues, providing public-facing analysis grounded in legal research.</p>
+          </div>
+        </li>
+      </ul>
+
+      <div class="article-head" style="margin:48px 0 28px;">
+        <span class="article-num" style="font-size:12px;">—</span>
+        <h2 style="font-size:22px;">Editorial Roles</h2>
+        <span class="article-line" aria-hidden="true"></span>
+      </div>
+      <ul class="pub-list">
+        <li class="pub">
+          <span class="pub-tag">2026 – Active</span>
+          <div>
+            <h3>Associate Editor, University of Bologna Law Review</h3>
+            <p>Manuscript assessment, peer-review coordination, academic editing.</p>
+          </div>
+        </li>
+        <li class="pub">
+          <span class="pub-tag">2025 – Active</span>
+          <div>
+            <h3>Invited Editorial Board Member, Scientific Journal of the Faculty of Physical Education and Sport Sciences, University of Baghdad</h3>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ARTICLE V — CONTACT -->
+  <section class="article" id="contact" style="border-bottom:none;">
+    <div class="wrap">
+      <div class="article-head">
+        <span class="article-num">ART. V</span>
+        <h2>Contact</h2>
+        <span class="article-line" aria-hidden="true"></span>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Email</h3>
+          <a href="mailto:Mohammadre.dolatkhah@unibo.studio.it">Mohammadre.dolatkhah@unibo.studio.it</a>
+        </div>
+        <div class="contact-card">
+          <h3>LinkedIn</h3>
+          <a href="https://www.linkedin.com/in/mrdolatkhah" target="_blank" rel="noopener">linkedin.com/in/mrdolatkhah</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:10px;">
+    <span>© <span id="year"></span> Sipan Dolatkhah, M.R.</span>
+    <span>Bologna, Italy</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Scroll-reveal for each article
+  const articles = document.querySelectorAll('.article');
+  if ('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    articles.forEach(a=> io.observe(a));
+  } else {
+    articles.forEach(a=> a.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>
