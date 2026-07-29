@@ -12,13 +12,13 @@
 
 <style>
   :root{
-    --ink:        #12202A;   /* deep slate-navy, background */
-    --ink-2:      #1B2E39;   /* slightly lighter panel */
-    --paper:      #EDEBDF;   /* cool document paper */
+    --ink:        #12202A;
+    --ink-2:      #1B2E39;
+    --paper:      #EDEBDF;
     --paper-dim:  #DCD9C9;
-    --seal:       #B08D3E;   /* brass / wax-seal accent */
+    --seal:       #B08D3E;
     --seal-soft:  rgba(176,141,62,0.16);
-    --ink-text:   #E7E4D6;   /* body text on dark */
+    --ink-text:   #E7E4D6;
     --ink-text-soft: #A9B4BB;
     --paper-text: #1B2420;
     --paper-text-soft:#5B6B60;
@@ -127,6 +127,33 @@
     border:1px solid var(--rule);
     border-radius:50%;
   }
+
+  .hero-inner{
+    display:flex;
+    align-items:flex-start;
+    gap:48px;
+  }
+  @media (max-width:700px){
+    .hero-inner{ flex-direction:column; align-items:center; gap:32px; }
+    .hero-portrait{ align-self:center; }
+  }
+
+  .hero-portrait{
+    flex-shrink:0;
+    width:168px;
+    height:168px;
+    border-radius:50%;
+    overflow:hidden;
+    border:2px solid var(--seal);
+    box-shadow:0 0 0 4px rgba(176,141,62,0.15);
+  }
+  .hero-portrait img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
   .eyebrow{
     font-family:var(--mono);
     font-size:12px;
@@ -281,6 +308,26 @@
     color:var(--ink-text-soft);
   }
 
+  /* Zagreb conference photo */
+  .conference-photo{
+    margin-top:44px;
+  }
+  .conference-photo img{
+    width:100%;
+    height:auto;
+    display:block;
+    border-radius:3px;
+    border:1px solid var(--rule);
+  }
+  .conference-photo figcaption{
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--ink-text-soft);
+    letter-spacing:0.04em;
+    margin-top:10px;
+    text-align:center;
+  }
+
   /* CV / paper panel */
   .cv-panel{
     background:var(--paper);
@@ -426,18 +473,25 @@
 
 <header class="hero">
   <div class="wrap">
-    <p class="eyebrow">Bologna, Italy — Sports Law &amp; International Public Law</p>
-    <h1 class="name">Sipan Dolatkhah<span class="suffix">M.R.</span></h1>
-    <p class="role">A law specialist working where sports governance, EU digital regulation, AI law, and international public law meet.</p>
-    <div class="hero-meta">
-      <span class="chip">LL.M. — University of Bologna, 110/110 cum laude</span>
-      <span class="chip">Sports Law · International Public Law</span>
-      <span class="chip">EU Digital &amp; AI Regulation</span>
-      <span class="chip">Multilingual — 5 languages</span>
-    </div>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="#cv">Read the CV</a>
-      <a class="btn btn-ghost" href="#contact">Get in touch</a>
+    <div class="hero-inner">
+      <div class="hero-portrait">
+        <img src="images/hero-portrait.jpg" alt="Sipan Dolatkhah, law specialist" width="168" height="168" loading="eager">
+      </div>
+      <div>
+        <p class="eyebrow">Bologna, Italy — Sports Law &amp; International Public Law</p>
+        <h1 class="name">Sipan Dolatkhah<span class="suffix">M.R.</span></h1>
+        <p class="role">A law specialist working where sports governance, EU digital regulation, AI law, and international public law meet.</p>
+        <div class="hero-meta">
+          <span class="chip">LL.M. — University of Bologna, 110/110 cum laude</span>
+          <span class="chip">Sports Law · International Public Law</span>
+          <span class="chip">EU Digital &amp; AI Regulation</span>
+          <span class="chip">Multilingual — 5 languages</span>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#cv">Read the CV</a>
+          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        </div>
+      </div>
     </div>
   </div>
 </header>
@@ -458,6 +512,10 @@
           <p>My background is in sports law and international public law, built on an LL.M. from the University of Bologna. From there my work has moved outward into the regulatory questions that now sit next to sport: EU digital platform rules, AI governance, and how international institutions adapt when the ground shifts under them.</p>
           <p>That has meant advising on governance for wrestling federations, working on the regulatory side of online sports streaming, and researching how human oversight should function under frameworks like the EU AI Act — often using professional sport as the case study that makes the abstract question concrete.</p>
           <p>Alongside the research, I spend a lot of time making legal ideas legible outside the seminar room — through two podcasts, occasional national broadcast commentary, and a forthcoming introductory book on legal studies.</p>
+          <figure class="conference-photo">
+            <img src="images/about-zagreb.jpg" alt="Sipan Dolatkhah presenting at the Zagreb International Conference, The Westin Zagreb" width="1200" height="900" loading="lazy">
+            <figcaption>Presenting "Crossing Borders on the Mat" — Zagreb International Conference, The Westin Zagreb · Best Young Researcher Award, 2026</figcaption>
+          </figure>
         </div>
         <div>
           <ul class="fact-list">
@@ -465,8 +523,7 @@
             <li><dt>Focus</dt><dd>Sports law, EU digital &amp; AI regulation, international public law</dd></li>
             <li><dt>Degree</dt><dd>LL.M., University of Bologna — 110/110 cum laude</dd></li>
             <li><dt>Languages</dt><dd>Persian, Kurdish, Armenian, English, Italian, Russian</dd></li>
-            <li><dt>Currently</dt><dd>Legal Advisor, Shamal Shin Construction — Independent Researcher  
-Currently advising on construction law while pursuing independent research in sport governance and regulatory frameworks. Actively engaged in academic inquiry and open to PhD opportunities, with a strong commitment to advancing interdisciplinary legal scholarship.</dd></li>
+            <li><dt>Currently</dt><dd>Legal Advisor, Shamal Shin Construction — Independent Researcher. Currently advising on construction law while pursuing independent research in sport governance and regulatory frameworks. Actively engaged in academic inquiry and open to PhD opportunities, with a strong commitment to advancing interdisciplinary legal scholarship.</dd></li>
           </ul>
         </div>
       </div>
@@ -594,7 +651,7 @@ Currently advising on construction law while pursuing independent research in sp
           <span class="pub-tag">Published Articles</span>
           <div>
             <h3>Other Published Work</h3>
-            <p>Dolatkhah, M. “The Impact of Sports Diplomacy on International Law and the Interface of Governments” (2023).<br>Dolatkhah, M. “Interpol and Its Benefits for International Law” (2017).</p>
+            <p>Dolatkhah, M. "The Impact of Sports Diplomacy on International Law and the Interface of Governments" (2023).<br>Dolatkhah, M. "Interpol and Its Benefits for International Law" (2017).</p>
           </div>
         </li>
       </ul>
@@ -697,7 +754,6 @@ Currently advising on construction law while pursuing independent research in sp
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Scroll-reveal for each article
   const articles = document.querySelectorAll('.article');
   if ('IntersectionObserver' in window){
     const io = new IntersectionObserver((entries)=>{
