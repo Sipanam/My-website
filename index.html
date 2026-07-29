@@ -140,8 +140,8 @@
 
   .hero-portrait{
     flex-shrink:0;
-    width:168px;
-    height:168px;
+    width:220px;
+    height:220px;
     border-radius:50%;
     overflow:hidden;
     border:2px solid var(--seal);
@@ -151,6 +151,7 @@
     width:100%;
     height:100%;
     object-fit:cover;
+    image-rendering:-webkit-optimize-contrast;
     display:block;
   }
 
@@ -308,23 +309,34 @@
     color:var(--ink-text-soft);
   }
 
-  /* Zagreb conference photo */
-  .conference-photo{
-    margin-top:44px;
+  /* ---------- Zagreb scroll-reveal interlude ---------- */
+  .zagreb-interlude{
+    padding:72px 0;
+    border-bottom:1px solid var(--rule);
   }
-  .conference-photo img{
+  .zagreb-reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity .9s cubic-bezier(0.16,1,0.3,1), transform .9s cubic-bezier(0.16,1,0.3,1);
+    will-change:opacity, transform;
+  }
+  .zagreb-reveal.is-visible{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .zagreb-reveal img{
     width:100%;
     height:auto;
     display:block;
     border-radius:3px;
     border:1px solid var(--rule);
   }
-  .conference-photo figcaption{
+  .zagreb-reveal figcaption{
     font-family:var(--mono);
     font-size:11.5px;
     color:var(--ink-text-soft);
     letter-spacing:0.04em;
-    margin-top:10px;
+    margin-top:12px;
     text-align:center;
   }
 
@@ -475,7 +487,7 @@
   <div class="wrap">
     <div class="hero-inner">
       <div class="hero-portrait">
-        <img src="images/hero-portrait.jpg" alt="Sipan Dolatkhah, law specialist" width="168" height="168" loading="eager">
+        <img src="images/hero-portrait.jpg" alt="Sipan Dolatkhah, law specialist" width="220" height="220" loading="eager">
       </div>
       <div>
         <p class="eyebrow">Bologna, Italy — Sports Law &amp; International Public Law</p>
@@ -512,10 +524,6 @@
           <p>My background is in sports law and international public law, built on an LL.M. from the University of Bologna. From there my work has moved outward into the regulatory questions that now sit next to sport: EU digital platform rules, AI governance, and how international institutions adapt when the ground shifts under them.</p>
           <p>That has meant advising on governance for wrestling federations, working on the regulatory side of online sports streaming, and researching how human oversight should function under frameworks like the EU AI Act — often using professional sport as the case study that makes the abstract question concrete.</p>
           <p>Alongside the research, I spend a lot of time making legal ideas legible outside the seminar room — through two podcasts, occasional national broadcast commentary, and a forthcoming introductory book on legal studies.</p>
-          <figure class="conference-photo">
-            <img src="images/about-zagreb.jpg" alt="Sipan Dolatkhah presenting at the Zagreb International Conference, The Westin Zagreb" width="1200" height="900" loading="lazy">
-            <figcaption>Presenting "Crossing Borders on the Mat" — Zagreb International Conference, The Westin Zagreb · Best Young Researcher Award, 2026</figcaption>
-          </figure>
         </div>
         <div>
           <ul class="fact-list">
@@ -601,6 +609,16 @@
       </div>
     </div>
   </section>
+
+  <!-- ZAGREB INTERLUDE — between CV and Publications -->
+  <div class="zagreb-interlude">
+    <div class="wrap">
+      <figure class="zagreb-reveal">
+        <img src="images/about-zagreb.jpg" alt="Sipan Dolatkhah presenting at the Zagreb International Conference, The Westin Zagreb" width="1200" height="900" loading="lazy">
+        <figcaption>Presenting "Crossing Borders on the Mat" — Zagreb International Conference, The Westin Zagreb · Best Young Researcher Award, 2026</figcaption>
+      </figure>
+    </div>
+  </div>
 
   <!-- ARTICLE III — RESEARCH & PUBLICATIONS -->
   <section class="article" id="research">
@@ -754,6 +772,7 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  // Section fade-in on scroll
   const articles = document.querySelectorAll('.article');
   if ('IntersectionObserver' in window){
     const io = new IntersectionObserver((entries)=>{
@@ -765,8 +784,25 @@
       });
     }, { threshold: 0.12 });
     articles.forEach(a=> io.observe(a));
+
+    // Zagreb photo: fade in when entering, fade out when leaving
+    const zagreb = document.querySelector('.zagreb-reveal');
+    if(zagreb){
+      const ro = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            zagreb.classList.add('is-visible');
+          } else {
+            zagreb.classList.remove('is-visible');
+          }
+        });
+      }, { threshold: 0.3 });
+      ro.observe(zagreb);
+    }
   } else {
     articles.forEach(a=> a.classList.add('in'));
+    const zagreb = document.querySelector('.zagreb-reveal');
+    if(zagreb) zagreb.classList.add('is-visible');
   }
 </script>
 
