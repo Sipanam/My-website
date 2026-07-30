@@ -155,9 +155,20 @@
     text-decoration:none;
     color:var(--ink-text);
     transition:color .2s ease;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:4px;
   }
   .mobile-menu a:hover,
   .mobile-menu a.active{ color:var(--seal); }
+  .mm-num{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--seal);
+  }
 
   @media (max-width:760px){
     .docket-links{ display:none; }
@@ -403,16 +414,17 @@
     text-align:center;
   }
 
-  /* CV / paper panel */
+  /* CV panel — now matches the rest of the site's dark theme */
   .cv-panel{
-    background:var(--paper);
-    color:var(--paper-text);
+    background:var(--ink-2);
+    color:var(--ink-text);
     border-radius:4px;
     padding:44px clamp(20px,4vw,52px);
+    border:1px solid var(--rule);
   }
-  .cv-panel .article-num{ color:#8A6A22; }
-  .cv-panel .article-line{ background:var(--rule-paper); }
-  .cv-panel .article-head h2{ color:var(--paper-text); }
+  .cv-panel .article-num{ color:var(--seal); }
+  .cv-panel .article-line{ background:var(--rule); }
+  .cv-panel .article-head h2{ color:var(--ink-text); }
 
   .timeline{ list-style:none; margin:0; padding:0; }
   .timeline li{
@@ -420,7 +432,7 @@
     grid-template-columns:120px 1fr;
     gap:24px;
     padding:22px 0;
-    border-top:1px solid var(--rule-paper);
+    border-top:1px solid var(--rule);
   }
   .timeline li:first-child{ border-top:none; }
   @media (max-width:600px){
@@ -429,7 +441,7 @@
   .timeline .when{
     font-family:var(--mono);
     font-size:12px;
-    color:#8A6A22;
+    color:var(--seal);
     letter-spacing:0.04em;
     padding-top:2px;
   }
@@ -438,17 +450,17 @@
     font-weight:500;
     font-size:18px;
     margin:0 0 6px;
-    color:var(--paper-text);
+    color:var(--ink-text);
   }
   .timeline p{
     margin:0;
     font-size:14.5px;
-    color:var(--paper-text-soft);
+    color:var(--ink-text-soft);
     max-width:60ch;
   }
   .fill{
     background:var(--seal-soft);
-    color:#7A5A18;
+    color:var(--seal);
     padding:0 4px;
     border-radius:2px;
     font-style:normal;
@@ -457,7 +469,7 @@
   .cv-download{
     margin-top:36px;
     padding-top:28px;
-    border-top:1px solid var(--rule-paper);
+    border-top:1px solid var(--rule);
     display:flex;
     align-items:center;
     gap:16px;
@@ -552,12 +564,12 @@
 
 <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
   <ul>
-    <li><a href="#home" class="nav-link" data-page="home">Home</a></li>
-    <li><a href="#about" class="nav-link" data-page="about">About</a></li>
-    <li><a href="#cv" class="nav-link" data-page="cv">Curriculum Vitae</a></li>
-    <li><a href="#research" class="nav-link" data-page="research">Research &amp; Publications</a></li>
-    <li><a href="#outreach" class="nav-link" data-page="outreach">Outreach &amp; Editorial</a></li>
-    <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
+    <li><a href="#home" class="nav-link" data-page="home"><span class="mm-num">Art. 0</span> Home</a></li>
+    <li><a href="#about" class="nav-link" data-page="about"><span class="mm-num">Art. I</span> About</a></li>
+    <li><a href="#cv" class="nav-link" data-page="cv"><span class="mm-num">Art. II</span> Curriculum Vitae</a></li>
+    <li><a href="#research" class="nav-link" data-page="research"><span class="mm-num">Art. III</span> Research &amp; Publications</a></li>
+    <li><a href="#outreach" class="nav-link" data-page="outreach"><span class="mm-num">Art. IV</span> Outreach &amp; Editorial</a></li>
+    <li><a href="#contact" class="nav-link" data-page="contact"><span class="mm-num">Art. V</span> Contact</a></li>
   </ul>
 </div>
 
@@ -682,18 +694,8 @@
 
         <div class="cv-download">
           <a class="btn btn-primary" href="cv.pdf">Download full CV (PDF)</a>
-          <span style="font-family:var(--mono);font-size:12px;color:var(--paper-text-soft);">Full professional history is in the PDF — link it here once it's on the site.</span>
+          <span style="font-family:var(--mono);font-size:12px;color:var(--ink-text-soft);">Full professional history is in the PDF — link it here once it's on the site.</span>
         </div>
-      </div>
-    </div>
-
-    <!-- ZAGREB INTERLUDE -->
-    <div class="zagreb-interlude">
-      <div class="wrap">
-        <figure class="zagreb-reveal is-visible">
-          <img src="images/about-zagreb.jpg" alt="Sipan Dolatkhah presenting at the Zagreb International Conference, The Westin Zagreb" width="1200" height="900" loading="lazy">
-          <figcaption>Presenting "Crossing Borders on the Mat" — Zagreb International Conference, The Westin Zagreb · Best Young Researcher Award, 2026</figcaption>
-        </figure>
       </div>
     </div>
   </section>
@@ -751,6 +753,16 @@
           </div>
         </li>
       </ul>
+    </div>
+
+    <!-- ZAGREB INTERLUDE -->
+    <div class="zagreb-interlude">
+      <div class="wrap">
+        <figure class="zagreb-reveal is-visible">
+          <img src="images/about-zagreb.jpg" alt="Sipan Dolatkhah presenting at the Zagreb International Conference, The Westin Zagreb" width="1200" height="900" loading="lazy">
+          <figcaption>Presenting "Crossing Borders on the Mat" — Zagreb International Conference, The Westin Zagreb · Best Young Researcher Award, 2026</figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
