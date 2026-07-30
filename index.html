@@ -97,11 +97,74 @@
   .docket-links a:hover,
   .docket-links a:focus-visible{ color:var(--seal); }
   .docket-links a:focus-visible{ outline:2px solid var(--seal); outline-offset:4px; border-radius:2px; }
-  .docket-toggle{ display:none; }
+  .docket-mark{ text-decoration:none; cursor:pointer; }
+  .nav-link.active{ color:var(--seal); }
 
-  @media (max-width:640px){
-    .docket-links{ gap:16px; }
-    .docket-links span.label{ display:none; }
+  /* ---------- Pages ---------- */
+  .page{ display:none; }
+  .page.is-active{ display:block; }
+
+  /* ---------- Hamburger ---------- */
+  .hamburger{
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    gap:5px;
+    width:32px; height:32px;
+    background:none;
+    border:none;
+    padding:0;
+    cursor:pointer;
+    flex-shrink:0;
+  }
+  .hamburger span{
+    display:block;
+    width:100%;
+    height:2px;
+    background:var(--ink-text);
+    transition:transform .25s ease, opacity .25s ease;
+  }
+  .hamburger.is-open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .hamburger.is-open span:nth-child(2){ opacity:0; }
+  .hamburger.is-open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+  .hamburger:focus-visible{ outline:2px solid var(--seal); outline-offset:4px; }
+
+  /* ---------- Mobile menu overlay ---------- */
+  .mobile-menu{
+    position:fixed;
+    inset:0;
+    z-index:60;
+    background:var(--ink);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .25s ease;
+  }
+  .mobile-menu.is-open{ opacity:1; visibility:visible; }
+  .mobile-menu ul{
+    list-style:none;
+    margin:0; padding:0;
+    text-align:center;
+  }
+  .mobile-menu li{ margin:20px 0; }
+  .mobile-menu a{
+    font-family:var(--display);
+    font-size:28px;
+    text-decoration:none;
+    color:var(--ink-text);
+    transition:color .2s ease;
+  }
+  .mobile-menu a:hover,
+  .mobile-menu a.active{ color:var(--seal); }
+
+  @media (max-width:760px){
+    .docket-links{ display:none; }
+    .hamburger{ display:flex; }
+  }
+  @media (min-width:761px){
+    .mobile-menu{ display:none !important; }
   }
 
   /* ---------- Hero ---------- */
@@ -470,20 +533,35 @@
 </head>
 <body>
 
-<nav class="docket" aria-label="Section navigation">
+<nav class="docket" aria-label="Site navigation">
   <div class="wrap">
-    <span class="docket-mark">Sipan Dolatkhah / Docket</span>
+    <a href="#home" class="docket-mark nav-link" data-page="home">Sipan Dolatkhah / Docket</a>
     <ul class="docket-links">
-      <li><a href="#about"><span class="label">Art. I —</span> About</a></li>
-      <li><a href="#cv"><span class="label">Art. II —</span> CV</a></li>
-      <li><a href="#research"><span class="label">Art. III —</span> Research</a></li>
-      <li><a href="#outreach"><span class="label">Art. IV —</span> Outreach</a></li>
-      <li><a href="#contact"><span class="label">Art. V —</span> Contact</a></li>
+      <li><a href="#home" class="nav-link" data-page="home"><span class="label">Art. 0 —</span> Home</a></li>
+      <li><a href="#about" class="nav-link" data-page="about"><span class="label">Art. I —</span> About</a></li>
+      <li><a href="#cv" class="nav-link" data-page="cv"><span class="label">Art. II —</span> CV</a></li>
+      <li><a href="#research" class="nav-link" data-page="research"><span class="label">Art. III —</span> Research</a></li>
+      <li><a href="#outreach" class="nav-link" data-page="outreach"><span class="label">Art. IV —</span> Outreach</a></li>
+      <li><a href="#contact" class="nav-link" data-page="contact"><span class="label">Art. V —</span> Contact</a></li>
     </ul>
+    <button class="hamburger" id="hamburgerBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
-<header class="hero">
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <ul>
+    <li><a href="#home" class="nav-link" data-page="home">Home</a></li>
+    <li><a href="#about" class="nav-link" data-page="about">About</a></li>
+    <li><a href="#cv" class="nav-link" data-page="cv">Curriculum Vitae</a></li>
+    <li><a href="#research" class="nav-link" data-page="research">Research &amp; Publications</a></li>
+    <li><a href="#outreach" class="nav-link" data-page="outreach">Outreach &amp; Editorial</a></li>
+    <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
+  </ul>
+</div>
+
+<header class="hero page is-active" id="home">
   <div class="wrap">
     <div class="hero-inner">
       <div class="hero-portrait">
@@ -497,11 +575,11 @@
           <span class="chip">LL.M. — University of Bologna, 110/110 cum laude</span>
           <span class="chip">Sports Law · International Public Law</span>
           <span class="chip">EU Digital &amp; AI Regulation</span>
-          <span class="chip">Multilingual — 5 languages</span>
+          <span class="chip">Multilingual — 6 languages</span>
         </div>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#cv">Read the CV</a>
-          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+          <a class="btn btn-primary nav-link" data-page="cv" href="#cv">Read the CV</a>
+          <a class="btn btn-ghost nav-link" data-page="contact" href="#contact">Get in touch</a>
         </div>
       </div>
     </div>
@@ -511,7 +589,7 @@
 <main>
 
   <!-- ARTICLE I — ABOUT -->
-  <section class="article" id="about">
+  <section class="article page" id="about">
     <div class="wrap">
       <div class="article-head">
         <span class="article-num">ART. I</span>
@@ -539,7 +617,7 @@
   </section>
 
   <!-- ARTICLE II — CV -->
-  <section class="article" id="cv">
+  <section class="article page" id="cv">
     <div class="wrap">
       <div class="cv-panel">
         <div class="article-head">
@@ -608,20 +686,20 @@
         </div>
       </div>
     </div>
+
+    <!-- ZAGREB INTERLUDE -->
+    <div class="zagreb-interlude">
+      <div class="wrap">
+        <figure class="zagreb-reveal is-visible">
+          <img src="images/about-zagreb.jpg" alt="Sipan Dolatkhah presenting at the Zagreb International Conference, The Westin Zagreb" width="1200" height="900" loading="lazy">
+          <figcaption>Presenting "Crossing Borders on the Mat" — Zagreb International Conference, The Westin Zagreb · Best Young Researcher Award, 2026</figcaption>
+        </figure>
+      </div>
+    </div>
   </section>
 
-  <!-- ZAGREB INTERLUDE — between CV and Publications -->
-  <div class="zagreb-interlude">
-    <div class="wrap">
-      <figure class="zagreb-reveal">
-        <img src="images/about-zagreb.jpg" alt="Sipan Dolatkhah presenting at the Zagreb International Conference, The Westin Zagreb" width="1200" height="900" loading="lazy">
-        <figcaption>Presenting "Crossing Borders on the Mat" — Zagreb International Conference, The Westin Zagreb · Best Young Researcher Award, 2026</figcaption>
-      </figure>
-    </div>
-  </div>
-
   <!-- ARTICLE III — RESEARCH & PUBLICATIONS -->
-  <section class="article" id="research">
+  <section class="article page" id="research">
     <div class="wrap">
       <div class="article-head">
         <span class="article-num">ART. III</span>
@@ -677,7 +755,7 @@
   </section>
 
   <!-- ARTICLE IV — OUTREACH & EDITORIAL ROLES -->
-  <section class="article" id="outreach">
+  <section class="article page" id="outreach">
     <div class="wrap">
       <div class="article-head">
         <span class="article-num">ART. IV</span>
@@ -740,7 +818,7 @@
   </section>
 
   <!-- ARTICLE V — CONTACT -->
-  <section class="article" id="contact" style="border-bottom:none;">
+  <section class="article page" id="contact" style="border-bottom:none;">
     <div class="wrap">
       <div class="article-head">
         <span class="article-num">ART. V</span>
@@ -772,38 +850,80 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Section fade-in on scroll
-  const articles = document.querySelectorAll('.article');
-  if ('IntersectionObserver' in window){
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          entry.target.classList.add('in');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    articles.forEach(a=> io.observe(a));
+  var PAGES = ['home','about','cv','research','outreach','contact'];
+  var pageEls = {};
+  PAGES.forEach(function(id){ pageEls[id] = document.getElementById(id); });
 
-    // Zagreb photo: fade in when entering, fade out when leaving
-    const zagreb = document.querySelector('.zagreb-reveal');
-    if(zagreb){
-      const ro = new IntersectionObserver((entries)=>{
-        entries.forEach(entry=>{
-          if(entry.isIntersecting){
-            zagreb.classList.add('is-visible');
-          } else {
-            zagreb.classList.remove('is-visible');
-          }
-        });
-      }, { threshold: 0.3 });
-      ro.observe(zagreb);
-    }
-  } else {
-    articles.forEach(a=> a.classList.add('in'));
-    const zagreb = document.querySelector('.zagreb-reveal');
-    if(zagreb) zagreb.classList.add('is-visible');
+  var navLinks = document.querySelectorAll('.nav-link');
+  var hamburgerBtn = document.getElementById('hamburgerBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+
+  function closeMobileMenu(){
+    mobileMenu.classList.remove('is-open');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    hamburgerBtn.classList.remove('is-open');
+    hamburgerBtn.setAttribute('aria-expanded', 'false');
   }
+
+  function showPage(id){
+    if (PAGES.indexOf(id) === -1) id = 'home';
+
+    PAGES.forEach(function(p){
+      if (!pageEls[p]) return;
+      pageEls[p].classList.toggle('is-active', p === id);
+    });
+
+    navLinks.forEach(function(link){
+      link.classList.toggle('active', link.getAttribute('data-page') === id);
+    });
+
+    // Fade the article inside the now-active page in immediately
+    var active = pageEls[id];
+    if (active){
+      var article = active.classList.contains('article') ? active : active.querySelector('.article');
+      if (article) article.classList.add('in');
+    }
+
+    window.scrollTo({ top: 0, behavior: 'auto' });
+    closeMobileMenu();
+  }
+
+  function currentHashPage(){
+    var h = window.location.hash.replace('#', '');
+    return h || 'home';
+  }
+
+  // Intercept nav clicks so we control the URL + routing ourselves
+  navLinks.forEach(function(link){
+    link.addEventListener('click', function(e){
+      var id = link.getAttribute('data-page');
+      e.preventDefault();
+      if (window.location.hash === '#' + id){
+        showPage(id);
+      } else {
+        window.location.hash = id; // triggers hashchange -> showPage
+      }
+    });
+  });
+
+  window.addEventListener('hashchange', function(){
+    showPage(currentHashPage());
+  });
+
+  // Hamburger toggle
+  hamburgerBtn.addEventListener('click', function(){
+    var isOpen = mobileMenu.classList.toggle('is-open');
+    hamburgerBtn.classList.toggle('is-open', isOpen);
+    hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+    mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+  });
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') closeMobileMenu();
+  });
+
+  // Initial load: honor a direct link / refreshed hash, else Home
+  showPage(currentHashPage());
 </script>
 
 </body>
